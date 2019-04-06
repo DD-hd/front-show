@@ -150,16 +150,20 @@
               path.push(newPonit);
               find = 0;
               arr[y][x].val = -2;
-              arr[y][x].dom.className = "target";
+              if (!(x === end.x && y === end.y) && !(x === 1 && y === 1)) {
+                arr[y][x].dom.className = "path";
+              }
             } else {
               const prevPoint = path.pop();
-              arr[nowP.y][nowP.x].dom.className = "";
+              if (!(prevPoint.x === 1 && prevPoint.y === 1)) {
+                arr[prevPoint.y][prevPoint.x].dom.className = "";
+              }
             }
-            setTimeout(pointPath.bind(this, path, end, arr), 300);
+            setTimeout(pointPath.bind(this, path, end, arr), 200);
           } else {
             alert("当前迷宫没有解");
           }
-        }, 300);
+        }, 200);
       }
 
       function findPath(start, end, arr) {
@@ -169,7 +173,9 @@
         point.y = start.y;
         point.val = start.val;
         point.di = 1;
+        arr[start.y][start.x].val = -2;
         path.push(point);
+        arr[start.y][start.x].dom.className = "target";
         pointPath(path, end, arr);
       }
 
