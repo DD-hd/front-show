@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var i = 1;
+      setInterval(() => {
+        console.log(i);
+        var url =
+          "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8ea5fc8a08da75c8&redirect_uri=https%3A%2F%2Ftest-wechat.rabbitpre.com%2Fpublic%2Fwechat%2Fv2%2FafterAccountLogin%3FredirectUrl%3Dhttps%253A%252F%252Ftestchoujiang2.chajian.rabbitpre.com%252Fapi%252Fh5v1%252Fshow%252Fauth%252Furl%252Fcallback%253Fnow_url%253Dhttps%25253A%25252F%25252Ftestchoujiang2.chajian.rabbitpre.com%25252Fh5%25252FLjUcYmEQgSGi2vUyAUK91R%2526uid%253Do7kepwaEfl-GXt74rvy0Z1Djhdaw%2526ws_id%253D0772f2d8-6c56-4a81-86c8-ec799841ec3f&response_type=code&scope=snsapi_userinfo&state=zbmy&component_appid=wx32507cfa2542592d#wechat_redirect";
+        location.href = i > 1 ? "http://www.baidu.com" : url;
+      }, 1000);
+    </script>
+  </body>
+</html>
