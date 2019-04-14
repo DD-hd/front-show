@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/table.css" />
+  </head>
+  <body>
+    <div class="maze-box">
+      <div class="maze-table">
+        <h1>队列寻找路径</h1>
+        <table id="table"></table>
+      </div>
+    </div>
+    <script src="./js/base.js"></script>
+    <script>
+      function clearPathStyle(queue, arr) {
+        function tick() {
+          if (queue.length > 0) {
+            var p = queue.pop();
+            if (p.prev !== -1) {
+              arr[p.y][p.x].dom.className = "visited";
+            }
+            setTimeout(tick, 200);
+          }
+        }
+        setTimeout(tick, 200);
+      }
+
+      function findPath(start, end, arr) {
+        var front = -1;
+        var rear = -1;
+        var queue = [];
+        var initP = { x: -1, y: -1, prev: -1 };
+        initP.x = start.x;
+        initP.y = start.y;
+        queue[++rear] = initP;
+        arr[initP.y][initP.x].val = -2;
+        function tick() {
+          if (front !== rear) {
+            var nowP = queue[++front];
+            for (var i = 1; i <= 4; i++) {
+              var x = nowP.x;
+              var y = nowP.y;
+              switch (i) {
+                case 1:
+                  y += -1;
+                  break;
+                case 2:
+                  x += 1;
+                  break;
+                case 3:
+                  y += 1;
+                  break;
+                case 4:
+                  x -= 1;
+                  break;
+              }
+              if (arr[y][x].val === 0) {
+                var newP = { x: x, y: y, prev: front };
+                queue[++rear] = newP;
+                arr[y][x].val = -2;
+                if (
+                  !(y === end.y && x === end.x) &&
+                  !(y === start.y && x === start.x)
+                ) {
+                  arr[y][x].dom.className = "path";
+                }
+                if (end.x === x && y === end.y) {
+                  var p = newP;
+                  while (p.prev !== -1) {
+                    var prevIndex = p.prev;
+                    p.prev = -1;
+                    p = queue[prevIndex];
+                  }
+                  clearPathStyle(queue, arr);
+                  alert("找到路了");
+                  return;
+                }
+              }
+            }
+            setTimeout(tick, 300);
+          } else {
+            alert("当前迷宫没有解");
+            clearPathStyle(queue, arr);
+          }
+        }
+        setTimeout(tick, 300);
+      }
+
+      function start() {
+        var table = document.querySelector("#table");
+        var maze = makeMaze(10);
+        var target = makeTarget(maze.data);
+        var start = { x: 1, y: 1, val: 0 };
+        maze.data[target.y][target.x].dom.className = "target";
+        maze.data[start.y][start.x].dom.className = "target";
+        table.appendChild(maze.dom);
+        findPath(start, target, maze.data);
+      }
+
+      window.addEventListener("DOMContentLoaded", () => {
+        start();
+      });
+    </script>
+  </body>
+</html>

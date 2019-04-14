@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>栈式寻找路径</title>
+    <link rel="stylesheet" href="css/table.css" />
+  </head>
+  <body>
+    <div class="maze-box">
+      <div class="maze-table">
+        <h1>栈式寻找路径</h1>
+        <table id="table"></table>
+      </div>
+    </div>
+    <script src="./js/base.js"></script>
+    <script>
+      function findPath(start, end, arr) {
+        var path = [];
+        var point = { x: -1, y: -1, val: -1, di: 1 };
+        point.x = start.x;
+        point.y = start.y;
+        point.val = start.val;
+        point.di = 1;
+        arr[start.y][start.x].val = -2;
+        path.push(point);
+        function tick(path, end, arr) {
+          if (path.length > 0) {
+            var nowP = path[path.length - 1];
+            var find = 0;
+            if (nowP.x === end.x && nowP.y === end.y) {
+              alert("找到路了");
+              return;
+            }
+            for (let i = nowP.di; i <= 4; i++) {
+              var x, y;
+              switch (i) {
+                case 1:
+                  x = nowP.x + 1;
+                  y = nowP.y;
+                  break;
+                case 2:
+                  x = nowP.x;
+                  y = nowP.y + 1;
+                  break;
+                case 3:
+                  x = nowP.x - 1;
+                  y = nowP.y;
+                  break;
+                case 4:
+                  x = nowP.x;
+                  y = nowP.y - 1;
+                  break;
+              }
+              if (arr[y][x].val === 0) {
+                find = 1;
+                nowP.di = i;
+                break;
+              }
+            }
+            if (find === 1) {
+              var newPonit = { x: -1, y: -1, val: -1, di: 1 };
+              newPonit.x = x;
+              newPonit.y = y;
+              newPonit.val = arr[y][x].val;
+              newPonit.className = arr[y][x].dom.className;
+              newPonit.di = 1;
+              path.push(newPonit);
+              find = 0;
+              arr[y][x].val = -2;
+              if (!(x === end.x && y === end.y) && !(x === 1 && y === 1)) {
+                arr[y][x].dom.className = "path";
+              }
+            } else {
+              const prevPoint = path.pop();
+              if (!(prevPoint.x === 1 && prevPoint.y === 1)) {
+                arr[prevPoint.y][prevPoint.x].dom.className = "";
+              }
+            }
+            setTimeout(tick.bind(this, path, end, arr), 200);
+          } else {
+            alert("当前迷宫没有解");
+          }
+        }
+        setTimeout(tick.bind(this, path, end, arr), 200);
+      }
+
+      function start() {
+        var table = document.querySelector("#table");
+        var ret = makeMaze(10);
+        var target = makeTarget(ret.data);
+        var start = { x: 1, y: 1, val: 0 };
+        table.innerHTML = "";
+        table.appendChild(ret.dom);
+        ret.data[target.y][target.x].dom.className = "target";
+        ret.data[start.y][start.x].dom.className = "target";
+        findPath(start, target, ret.data);
+      }
+
+      window.addEventListener("DOMContentLoaded", () => {
+        start();
+      });
+    </script>
+  </body>
+</html>

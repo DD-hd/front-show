@@ -1,0 +1,51 @@
+.maze-box {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+.maze-table {
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  /* width: 60%; */
+  /* background-color: aquamarine; */
+}
+.maze-table table {
+  /* display: inline-block; */
+  /* vertical-align: bottom;
+  position: absolute; */
+  border: 2px solid rgb(200, 200, 200);
+}
+.maze-table td {
+  border: 1px solid rgb(200, 200, 200);
+  width: 16px;
+  height: 16px;
+  padding: 0;
+}
+
+.maze-table td.block {
+  background-color: red;
+}
+
+.maze-table td.target {
+  background-color: green;
+}
+
+.maze-table td.wall {
+  background-color: black;
+}
+
+.maze-table td.path {
+  background-color: cyan;
+}
+
+.maze-table td.visited {
+  background-color: bisque;
+}
+
+.maze-box h1 {
+  text-align: center;
+}
