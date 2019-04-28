@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./common.css" />
+    <style>
+      .parent-1 {
+        height: 100px;
+        text-align: center;
+        border: 1px solid green;
+      }
+      .son-1 {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+      }
+
+      .parent-2 {
+        height: 100px;
+        border: 1px solid green;
+      }
+      .son-2 {
+        display: table;
+        margin: 0 auto;
+        height: 30px;
+        width: 30px;
+      }
+
+      .parent-3 {
+        height: 100px;
+        display: table-cell;
+        width: 100%;
+        vertical-align: middle;
+        border: 1px solid green;
+      }
+      .son-3 {
+        display: inline-block;
+        height: 30px;
+        width: 30px;
+      }
+
+      .parent-4 {
+        height: 100px;
+        width: 100%;
+        border: 1px solid green;
+        position: relative;
+      }
+      .son-4 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -15px;
+        margin-top: -15px;
+        height: 30px;
+        width: 30px;
+      }
+
+      .parent-5 {
+        height: 100px;
+        width: 100%;
+        border: 1px solid green;
+        position: relative;
+      }
+      .son-5 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 30px;
+        width: 30px;
+      }
+
+      .parent-6 {
+        height: 100px;
+        width: 100%;
+        border: 1px solid green;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .son-6 {
+        height: 30px;
+        width: 30px;
+      }
+
+      .parent-7 {
+        height: 100px;
+        width: 100%;
+        border: 1px solid green;
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+      }
+      .son-7 {
+        display: inline-block;
+        height: 30px;
+        width: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>水平居中 inline-block：inline-block + text-align</h2>
+    <div class="parent-1 bc-black">
+      <span class="son-1 bc-green"></span>
+      <span class="son-1 bc-green"></span>
+      <span class="son-1 bc-green"></span>
+      <span class="son-1 bc-green"></span>
+    </div>
+
+    <h2>水平居中 display: table/block + margin</h2>
+    <div class="parent-1 bc-black">
+      <span class="son-1 bc-green"></span>
+      <span class="son-1 bc-green"></span>
+      <span class="son-1 bc-green"></span>
+      <span class="son-1 bc-green"></span>
+    </div>
+
+    <h2>垂直居中 table-cell方案</h2>
+    <div class="parent-3 bc-black">
+      <span class="son-3 bc-green"></span>
+      <span class="son-3 bc-green"></span>
+      <span class="son-3 bc-green"></span>
+      <span class="son-3 bc-green"></span>
+    </div>
+
+    <h2>水平、垂直同时居中 absolute + margin</h2>
+    <div class="parent-4">
+      <span class="son-4 bc-green"></span>
+    </div>
+
+    <h2>水平、垂直同时居中 absolute + transform</h2>
+    <div class="parent-5">
+      <span class="son-5 bc-green"></span>
+    </div>
+
+    <h2>水平、垂直同时居中 flex + justify-content + align-items</h2>
+    <div class="parent-6">
+      <span class="son-6 bc-green"></span>
+    </div>
+
+    <h2>
+      水平、垂直同时居中 inline-block + text-align + table-cell + vertical-align
+    </h2>
+    <div class="parent-7">
+      <span class="son-7 bc-green"></span>
+    </div>
+  </body>
+</html>
