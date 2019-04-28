@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./common.css" />
+    <style>
+      .parent {
+        overflow: hidden;
+        border: 3px solid green;
+      }
+      .three-sub {
+        width: 100px;
+        float: left;
+      }
+      .three-extra {
+        width: 200px;
+        float: right;
+      }
+      .three-main {
+        height: 100%;
+        margin-left: 100px;
+        margin-right: 200px;
+      }
+
+      .holy-main {
+        float: left;
+        width: 100%;
+      }
+      .holy-left {
+        float: left;
+        width: 190px;
+        margin-left: -100%;
+      }
+
+      .holy-right {
+        float: left;
+        width: 230px;
+        margin-left: -230px;
+      }
+
+      .flex-parent {
+        display: flex;
+        background-color: blanchedalmond;
+        height: 300px;
+        align-items: stretch;
+      }
+      .flex-right {
+        flex-grow: 0;
+        width: 300px;
+      }
+
+      .flex-left {
+        flex-grow: 0;
+        width: 300px;
+      }
+
+      .flex-main {
+        flex-grow: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>简单三列</h2>
+    <div class="parent">
+      <div class="three-sub bc-black">
+        sub
+        <p>12133</p>
+      </div>
+      <div class="three-extra bc-black">extra</div>
+      <div class="three-main bc-green">main</div>
+    </div>
+
+    <h2>圣杯布局</h2>
+    <div class="parent">
+      <div class="holy-main bc-green">main</div>
+      <div class="holy-right bc-black">
+        sub
+        <p>12133</p>
+      </div>
+      <div class="holy-left bc-black">extra</div>
+    </div>
+
+    <h2>flex布局</h2>
+    <div class="parent flex-parent">
+      <div class="flex-right bc-black">
+        sub
+        <p>12133</p>
+      </div>
+      <div class="flex-main bc-green">main</div>
+      <div class="flex-left bc-black">extra</div>
+    </div>
+  </body>
+</html>
