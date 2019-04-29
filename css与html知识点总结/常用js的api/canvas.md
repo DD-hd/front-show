@@ -1,0 +1,20 @@
+- canvas
+  - 笔触属性
+    - fillStyle 绘画的填充样式
+    - strokeStyle 笔触的填充样式
+    - 绘画样式
+  - 线条样式
+    - lineCap 返回线条的结束端点样式
+  - 矩形
+    - rect 创建矩形样式
+    - fillRect 填充矩形样式
+    - strokeRect 绘制矩形样式
+    - clearRect 给指定的矩形内清除样式
+  - 路径
+    - fill 填充当前绘图（路径）
+    - stroke 绘制当前路径
+    - beginPath 起始一条路径 （beginPath->moveTo->lineTo?->closePath）
+    - moveTo 移动路径起始点，不创建线条
+    - lineTo 添加一个新点
+    - closePath 创建当前点到起始点的路径
+    - clip 区域裁剪
